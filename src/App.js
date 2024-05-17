@@ -17,7 +17,7 @@ function App() {
 
     const address= await signer.getAddress();
 
-    const contract=new ethers.Contract("0x1bafEd069eD4e3a30341A937D3Aae33c5854eb9C",abi,signer);
+    const contract=new ethers.Contract("0x9E2811a364Cd37d7DE96eE6E187F7eDa7A63047a",abi,signer);
     let index=0;
     let loadguilds=true;
     let guilds=[];
