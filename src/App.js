@@ -3,6 +3,8 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import abi from './Betting.json'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
@@ -17,7 +19,7 @@ function App() {
 
     const address= await signer.getAddress();
 
-    const contract=new ethers.Contract("0x9E2811a364Cd37d7DE96eE6E187F7eDa7A63047a",abi,signer);
+    const contract=new ethers.Contract("0x954e099ea59AbfD7ae5d0A16ffd4CD72d0616DaA",abi,signer);
     let index=0;
     let loadguilds=true;
     let guilds=[];
@@ -35,10 +37,17 @@ function App() {
   }
 
   async function handlesubmit(){
+    toast.info("Placing bet on guild");
     const guildid=document.getElementById('guild-id').value;
     const amount=document.getElementById('amount').value;
-    const tx=await contract.placeBidOnGuild(guildid,amount);
-    await tx.wait();
+    try{
+
+      const tx=await contract.placeBidOnGuild(guildid,amount);
+      await tx.wait();
+      toast.success("Bet placed successfully");
+    }catch(e){
+      toast.error(e.message);
+    }
   
   }
   
@@ -60,6 +69,7 @@ function App() {
             <button onClick={handlesubmit}>Placebet</button>
         </div>
         }
+        <ToastContainer />
 
         </>);
 
