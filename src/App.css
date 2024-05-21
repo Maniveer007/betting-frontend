@@ -40,6 +40,8 @@
 .container {
   display: flex;
   gap: 20px; /* Adjust the gap to your desired spacing */
+  width: 1vw;
+  /* background-color: lightblue; */
 }
 
 .box {
@@ -69,6 +71,51 @@
   cursor: pointer;
 }
 
-.form-container button:hover {
-  background-color: #0056b3;
+
+.box.selected {
+  background-color: #f0f0f0; /* Choose any color you like */
+  border: 2px solid #000;   /* Optional: add a border to make it more distinct */
 }
+
+.balance-container {
+  position: fixed;
+  top: 2vh;
+  right: 2vw;
+  background-color: white;
+  padding: 1vh 2vw;
+  border-radius: 0.5vh;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  font-size: 2vh;
+  font-weight: bold;
+  z-index: 100;
+}
+
+/* LoadingSpinner.css */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.loading-spinner {
+  border: 1vh solid #f3f3f3; /* Light grey */
+  border-top: 1vh solid #007bff; /* Blue */
+  border-radius: 50%;
+  width: 10vh;
+  height: 10vh;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
